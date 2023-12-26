@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dewits620173y"]
+
+[ext_resource type="Script" path="res://addons/godot_fps_sync/demo/player.gd" id="1_tltyp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ko8xp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s254p"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_blhlc"]
+radius = 0.25
+height = 0.5
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_tltyp")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ko8xp")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_s254p")
+skeleton = NodePath("../BodyCollision")
+
+[node name="Hand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41471, 0.82856)
+mesh = SubResource("SphereMesh_blhlc")

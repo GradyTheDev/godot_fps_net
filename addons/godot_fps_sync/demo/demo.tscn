@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5tbi2copugt6"]
+
+[ext_resource type="Script" path="res://addons/godot_fps_sync/demo/demo.gd" id="1_gj84t"]
+[ext_resource type="Script" path="res://addons/godot_fps_sync/lib/glue/old/node_synchronizer.gd" id="1_vjdqy"]
+
+[node name="Demo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gj84t")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ServerContainer" type="SubViewportContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="ServerSync" type="Node" parent="Container/ServerContainer" node_paths=PackedStringArray("viewport")]
+unique_name_in_owner = true
+script = ExtResource("1_vjdqy")
+viewport = NodePath("../Server")
+
+[node name="Server" type="SubViewport" parent="Container/ServerContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(570, 648)
+render_target_update_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="Container"]
+layout_mode = 2
+
+[node name="ClientContainer" type="SubViewportContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="ClientSync" type="Node" parent="Container/ClientContainer" node_paths=PackedStringArray("viewport")]
+unique_name_in_owner = true
+script = ExtResource("1_vjdqy")
+viewport = NodePath("../Client")
+
+[node name="Client" type="SubViewport" parent="Container/ClientContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(570, 648)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 288.0
+offset_right = 338.0
+offset_bottom = 23.0
+text = "Server"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 832.0
+offset_right = 877.0
+offset_bottom = 23.0
+text = "Client"
+
+[node name="Log" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 267.0
+offset_bottom = 264.0
+text = "--Log--
+"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd3s36hyaf0ld"]
+
+[ext_resource type="Script" path="res://launcher.gd" id="1_q3qso"]
+
+[node name="Launcher" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_q3qso")
+
+[node name="Server" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Client" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Client2" type="Node" parent="."]
+unique_name_in_owner = true
