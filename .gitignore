@@ -13,3 +13,7 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# GUT
+.gut_editor_shortcuts.cfg
+addons/gut
